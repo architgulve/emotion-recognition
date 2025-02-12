@@ -8,6 +8,9 @@ const RootLayout = () => {
   const [fontLoaded] = useFonts({
     "Momentz": require("../assets/fonts/Momentz.otf")
   });
+  if (!fontLoaded) {
+    return null; 
+  }
   return (
    <SafeAreaProvider>
     <Stack>

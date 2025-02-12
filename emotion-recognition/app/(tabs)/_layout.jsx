@@ -4,7 +4,11 @@ import { Tabs } from 'expo-router'
 
 const TabsLayout = () => {
   return (
-    <Tabs>
+    <Tabs
+      screenOptions={{
+        headerShown: false,
+      }}
+    >
       <Tabs.Screen
         name="home"
         options={{
