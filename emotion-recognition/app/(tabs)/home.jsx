@@ -29,7 +29,7 @@ const Home = () => {
               style={{
                 fontSize: 30,
                 color: "#162B47",
-                fontWeight: "800"
+                fontWeight: "500"
               }}
             >
               Hello!
