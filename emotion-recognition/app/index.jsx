@@ -3,6 +3,7 @@ import React from "react";
 import { router } from "expo-router";
 import { useFonts } from "expo-font";
 import Logo from "../assets/svg/BambooBud.svg";
+import { StatusBar } from "expo-status-bar";
 
 const EntryPoint = () => {
   const [fontsLoaded] = useFonts({
@@ -18,6 +19,7 @@ const EntryPoint = () => {
         backgroundColor: "#fffdee",
       }}
     >
+      <StatusBar hidden={true}/>
       <View
         style={{
           backgroundColor: "#fffdee",

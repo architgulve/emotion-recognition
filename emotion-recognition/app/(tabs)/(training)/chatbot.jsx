@@ -1,16 +1,14 @@
 import { View, Text } from "react-native";
 import React from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { StatusBar } from "expo-status-bar";
 
-const Home = () => {
+const ChatBot = () => {
   return (
     <SafeAreaView
       style={{
         backgroundColor: "#fffdee",
       }}
     >
-      <StatusBar style="dark" hidden={false}/>
       <View
         style={{
           backgroundColor: "#fffdee",
@@ -24,21 +22,13 @@ const Home = () => {
             width: "90%",
           }}
         >
-          <View style={{}}>
-            <Text
-              style={{
-                fontSize: 30,
-                color: "#162B47",
-                fontWeight: "500"
-              }}
-            >
-              Hello!
-            </Text>
-          </View>
+          <Text>
+            CHATBOT
+          </Text>
         </View>
       </View>
     </SafeAreaView>
   );
 };
 
-export default Home;
+export default ChatBot;
