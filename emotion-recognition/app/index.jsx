@@ -38,7 +38,7 @@ const EntryPoint = () => {
             height: "20%",
             justifyContent: "center"
           }}>
-            <Logo width={350}/>
+            <Logo width={300}/>
           </View>
 
           <Pressable
@@ -52,7 +52,8 @@ const EntryPoint = () => {
             <View
               style={{
                 backgroundColor: "#9ED2B3",
-                padding: "12",
+                padding: "20",
+                marginBottom: "30",
                 width: "100%",
                 borderRadius: 100,
                 alignItems: "center",
@@ -60,7 +61,7 @@ const EntryPoint = () => {
             >
               <Text
                 style={{
-                  fontSize: "20",
+                  // fontSize: "20",
                   fontWeight: "500",
                   color: "#162B47"
                 }}
