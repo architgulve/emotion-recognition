@@ -19,7 +19,7 @@ const EntryPoint = () => {
         backgroundColor: "#fffdee",
       }}
     >
-      <StatusBar hidden={true}/>
+      <StatusBar hidden={true} />
       <View
         style={{
           backgroundColor: "#fffdee",
@@ -36,11 +36,12 @@ const EntryPoint = () => {
           }}
         >
           <View
-          style={{
-            height: "20%",
-            justifyContent: "center"
-          }}>
-            <Logo width={350}/>
+            style={{
+              height: "20%",
+              justifyContent: "center",
+            }}
+          >
+            <Logo width={300} />
           </View>
 
           <Pressable
@@ -54,17 +55,20 @@ const EntryPoint = () => {
             <View
               style={{
                 backgroundColor: "#9ED2B3",
-                padding: "12",
+                padding: "10",
                 width: "100%",
                 borderRadius: 100,
                 alignItems: "center",
+                marginBottom: "40",
+                padding: "20",
               }}
             >
               <Text
                 style={{
-                  fontSize: "20",
+                  // fontSize: "20",
                   fontWeight: "500",
-                  color: "#162B47"
+                  color: "#162B47",
+                  fontFamily: "Momentz",
                 }}
               >
                 Continue

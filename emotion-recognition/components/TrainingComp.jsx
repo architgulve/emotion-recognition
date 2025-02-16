@@ -3,12 +3,12 @@ import React from "react";
 import { Pressable } from "react-native";
 import { router } from "expo-router";
 
-const TrainingComp = ({handlePress, title}) => {
+const TrainingComp = ({ handlePress, title }) => {
   return (
     <Pressable
       onPress={handlePress}
       style={{
-        height: "20%",
+        height: "28%",
         marginVertical: 10,
       }}
     >
@@ -19,9 +19,11 @@ const TrainingComp = ({handlePress, title}) => {
           backgroundColor: "#9ED2B3",
           padding: 20,
           borderRadius: 20,
+          justifyContent: "center",
+          alignItems: "center",
         }}
       >
-        <Text>{title}</Text>
+        <Text style={{ fontSize: 20, fontWeight: "bold" }}>{title}</Text>
       </View>
     </Pressable>
   );
