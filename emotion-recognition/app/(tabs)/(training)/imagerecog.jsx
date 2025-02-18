@@ -31,13 +31,23 @@ const ImageRecognition = () => {
           <Text>
             camera view
           </Text>
+          {/* <View
+            style={{
+              width: '100%',
+              height: '100%',
+              backgroundColor: '#9ED2B3'
+            }}
+          >
+            
+          </View> */}
           <WebView
             style={{
               width: "100%",
               height: "100%"
+              
             }}
            source={{
-            uri: 'http://192.168.20.164:5000/'
+            uri: 'http://192.168.20.164:8080'
            }}
           />
         </View>

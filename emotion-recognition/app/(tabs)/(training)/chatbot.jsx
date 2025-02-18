@@ -14,7 +14,7 @@ const ChatBot = () => {
         user: {
           _id: 2,
           name: "React Native",
-          avatar: "https://placeimg.com/140/140/any",
+          // avatar: "https://placeimg.com/140/140/any",
         },
       },
     ]);
@@ -56,7 +56,7 @@ const ChatBot = () => {
         </View>
           <View
             style={{
-              height: "80%",
+              height: "90%",
               marginTop: 20,
               alignContent: "center",
               width: "90%",
@@ -65,6 +65,9 @@ const ChatBot = () => {
             }}
           >
             <GiftedChat
+              style={{
+
+              }}
               showAvatarForEveryMessage={true}
               showUserAvatar={true}
               alwaysShowSend={true}
