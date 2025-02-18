@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emotion Recognition</title>
+</head>
+<body>
+    <h2>Webcam Emotion Recognition</h2>
+    <video id="video" width="640" height="480" autoplay></video>
+    <canvas id="canvas" width="640" height="480" style="display: none;"></canvas>
+    <p id="emotion">Detected Emotion: </p>
+
+    <script>
+        const video = document.getElementById("video");
+        const canvas = document.getElementById("canvas");
+        const ctx = canvas.getContext("2d");
+
+        // Start the webcam stream
+        async function startWebcam() {
+            try {
+                const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+                video.srcObject = stream;
+            } catch (error) {
+                console.error("Error accessing webcam:", error);
+            }
+        }
+
+        // Capture image and send to backend every 2 seconds
+        async function captureAndSend() {
+            ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+            canvas.toBlob(async (blob) => {
+                const formData = new FormData();
+                formData.append("image", blob, "frame.jpg");
+
+                try {
+                    const response = await fetch("/detect-emotion", {
+                        method: "POST",
+                        body: formData
+                    });
+                    const data = await response.json();
+                    document.getElementById("emotion").innerText = "Detected Emotion: " + data.emotion;
+                } catch (error) {
+                    console.error("Error sending image:", error);
+                }
+            }, "image/jpeg");
+        }
+
+        // Start everything
+        startWebcam();
+        setInterval(captureAndSend, 2000);
+    </script>
+</body>
+</html>

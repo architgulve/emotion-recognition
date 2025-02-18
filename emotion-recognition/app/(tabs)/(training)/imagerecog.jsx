@@ -2,6 +2,7 @@ import { View, Text } from 'react-native'
 import React from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { StatusBar } from 'expo-status-bar'
+import { WebView } from 'react-native-webview'
 
 const ImageRecognition = () => {
   return (
@@ -29,6 +30,15 @@ const ImageRecognition = () => {
           <Text>
             camera view
           </Text>
+          <WebView
+            style={{
+              width: "100%",
+              height: "100%"
+            }}
+           source={{
+            uri: 'http://192.168.20.164:5000/'
+           }}
+          />
         </View>
       </View>
     </SafeAreaView>
