@@ -3,13 +3,14 @@ import React from "react";
 import { Pressable } from "react-native";
 import { router } from "expo-router";
 
-const TrainingComp = ({ handlePress, title }) => {
+const QuizComp = ({ handlePress, question }) => {
   return (
     <Pressable
       onPress={handlePress}
       style={{
-        height: "28%",
+        height: "40%",
         marginVertical: 10,
+        width:"100%"
       }}
     >
       <View
@@ -23,10 +24,10 @@ const TrainingComp = ({ handlePress, title }) => {
           alignItems: "center",
         }}
       >
-        <Text style={{ fontSize: 20, fontWeight: "bold" }}>{title}</Text>
+        <Text style={{ fontSize: 20, fontWeight: "bold" }}>{question}</Text>
       </View>
     </Pressable>
   );
 };
 
-export default TrainingComp;
+export default QuizComp;

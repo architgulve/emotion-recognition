@@ -18,8 +18,9 @@ const TabsLayout = () => {
         name="home"
         options={{
           title: 'Home',
+          tabBarLabel: 'Home',
           tabBarIcon: () => (
-            <Ionicons name="home" size={26} color="white"/>
+            <Ionicons name="home" size={26} color="#162B47"/>
           )
         }}
       />
@@ -28,7 +29,7 @@ const TabsLayout = () => {
         options={{
           title: 'Training',
           tabBarIcon: () => (
-            <Ionicons name="barbell" size={26} color="white"/>
+            <Ionicons name="clipboard" size={26} color="#162B47"/>
           )
         }}
       />

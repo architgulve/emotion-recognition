@@ -5,6 +5,7 @@ import { StatusBar } from 'expo-status-bar'
 import { WebView } from 'react-native-webview'
 
 const ImageRecognition = () => {
+  
   return (
     <SafeAreaView
       style={{
