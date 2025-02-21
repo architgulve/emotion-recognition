@@ -4,6 +4,7 @@ import { router } from "expo-router";
 import { useFonts } from "expo-font";
 import Logo from "../assets/svg/BambooBud.svg";
 import { StatusBar } from "expo-status-bar";
+import Panda from "../assets/svg/Panda.svg";
 
 const EntryPoint = () => {
   const [fontsLoaded] = useFonts({
@@ -20,9 +21,18 @@ const EntryPoint = () => {
       }}
     >
       <StatusBar hidden={true} />
+
+      <Panda
+        width={400}
+        style={{
+          position: "absolute",
+          top: 315,
+          right: 30
+        }}
+      />
       <View
         style={{
-          backgroundColor: "#fffdee",
+          // backgroundColor: "#fffdee",
           height: "100%",
           alignItems: "center",
         }}
@@ -65,10 +75,10 @@ const EntryPoint = () => {
             >
               <Text
                 style={{
-                  // fontSize: "20",
+                  fontSize: "20",
                   fontWeight: "500",
                   color: "#162B47",
-                  fontFamily: "Momentz",
+                  // fontFamily: "Momentz",
                 }}
               >
                 Continue
