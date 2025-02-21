@@ -1,12 +1,12 @@
 import React, { useState, useEffect, useRef } from "react";
-import { View, Text, StyleSheet, Button } from "react-native";
+import { View, Text, StyleSheet, Button, TouchableOpacity, SafeAreaView } from "react-native";
 import { CameraView, useCameraPermissions } from "expo-camera";
 
 const CameraViewComponent = () => {
   const [permission, requestPermission] = useCameraPermissions();
   const cameraRef = useRef(null);
   const [emotion, setEmotion] = useState(null);
-  const intervalRef = useRef(null); // Use ref instead of state for capturing
+  const [isProcessing, setIsProcessing] = useState(false);
 
   useEffect(() => {
     if (!permission) {
@@ -14,46 +14,29 @@ const CameraViewComponent = () => {
     }
   }, [permission]);
 
-  useEffect(() => {
-    // Start capturing when permission is granted
-    if (permission?.granted) {
-      startCapturing();
-    }
-
-    // Cleanup function
-    return () => {
-      if (intervalRef.current) {
-        clearInterval(intervalRef.current);
-        intervalRef.current = null;
-      }
-    };
-  }, [permission]); // Only depend on permission
-
-  const startCapturing = () => {
-    if (!intervalRef.current) {
-      intervalRef.current = setInterval(() => {
-        captureAndAnalyze();
-      }, 3000);
-    }
-  };
-
   const captureAndAnalyze = async () => {
-    if (cameraRef.current) {
+    if (cameraRef.current && !isProcessing) {
       try {
+        setIsProcessing(true);
+        setEmotion(null);
+        
         const photo = await cameraRef.current.takePictureAsync({
           base64: true,
-          quality: 0.5, // Reduced quality for better performance
+          quality: 0.5,
         });
         await analyzeEmotion(photo.base64);
       } catch (error) {
         console.error('Error capturing photo:', error);
+        setEmotion('Error capturing photo');
+      } finally {
+        setIsProcessing(false);
       }
     }
   };
 
   const analyzeEmotion = async (base64Image) => {
     try {
-      const response = await fetch('https://52ba-219-91-171-110.ngrok-free.app/detect-emotion', {
+      const response = await fetch('https://e93f-2409-40c2-105e-8e4a-e59f-2ce3-c5e2-6bfc.ngrok-free.app/detect-emotion', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -78,17 +61,43 @@ const CameraViewComponent = () => {
   }
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView
+    style={{
+      flex: 1,
+      backgroundColor: "#000", 
+    }}>
+
+    <View style={{
+      flex: 1,
+    }}>
       <CameraView
-        style={styles.camera}
+        style={{
+          flex: 1,
+        }}
         ref={cameraRef}
         facing="front"
       >
-        <View style={styles.overlay}>
-          <Text style={styles.text}>Detected Emotion: {emotion || 'N/A'}</Text>
+        <View style={{
+          flex: 1,
+          alignItems: "center",
+          justifyContent: "space-between",
+        }}>
+          <Text style={styles.text}>
+            {isProcessing ? 'Processing...' : `Detected Emotion: ${emotion || 'N/A'}`}
+          </Text>
+          <TouchableOpacity 
+            style={styles.button}
+            onPress={captureAndAnalyze}
+            disabled={isProcessing}
+          >
+            <Text style={styles.buttonText}>
+              {isProcessing ? 'Processing...' : 'Detect Emotion'}
+            </Text>
+          </TouchableOpacity>
         </View>
       </CameraView>
     </View>
+    </SafeAreaView>
   );
 };
 
@@ -104,6 +113,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
+    gap: 20,
   },
   text: {
     color: "#fff",
@@ -116,6 +126,20 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
+  },
+  button: {
+    backgroundColor: '#4CAF50',
+    padding: 15,
+    borderRadius: 10,
+    marginTop: 20,
+    minWidth: 150,
+    opacity: 1,
+  },
+  buttonText: {
+    color: 'white',
+    fontSize: 16,
+    textAlign: 'center',
+    fontWeight: 'bold',
   },
 });
 
