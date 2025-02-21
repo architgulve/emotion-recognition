@@ -5,7 +5,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { beginAsyncEvent } from 'react-native/Libraries/Performance/Systrace';
 
-const API_KEY = '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';
+const API_KEY = '';
 const API_URL = 'https://openrouter.ai/api/v1/chat/completions';
 const STORAGE_KEY = 'chatHistory';
 const MESSAGE_LIMIT = 50; // Limit stored messages to prevent excessive storage use
